@@ -1,0 +1,685 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HaberlerModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="isimler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="255" />
+          <Property Name="Cinsiyet" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Soyisimler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Soyadi" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Begeni">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UyeNo" Type="int" Nullable="false" />
+          <Property Name="HaberNo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Haberler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnaBaslik" Type="nvarchar" MaxLength="200" />
+          <Property Name="HaberOzet" Type="nvarchar" MaxLength="300" />
+          <Property Name="HaberYazisi" Type="nvarchar(max)" />
+          <Property Name="YayinTarihi" Type="date" />
+          <Property Name="BeğeniSayisi" Type="int" />
+          <Property Name="YorumSayisi" Type="int" />
+          <Property Name="Okundu" Type="int" />
+          <Property Name="Paylasildi" Type="int" />
+          <Property Name="YazarNo" Type="int" />
+          <Property Name="BaslikResim" Type="varbinary(max)" />
+          <Property Name="Tur" Type="nvarchar" MaxLength="15" />
+          <Property Name="KategoriNo" Type="int" />
+          <Property Name="YayinSaati" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="tbl_HaberResim">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="haberid" Type="int" />
+          <Property Name="resim" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Kategori">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl_Paylasildi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UyeNo" Type="int" Nullable="false" />
+          <Property Name="HaberNo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Trafik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ip" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="GirisTarih" Type="date" />
+          <Property Name="Tur" Type="nvarchar" MaxLength="20" />
+          <Property Name="GirisSaat" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="tbl_Uye">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="İsim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyisim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Eposta" Type="nvarchar" MaxLength="50" />
+          <Property Name="Parola" Type="char" MaxLength="30" />
+          <Property Name="DogumTarihi" Type="date" />
+          <Property Name="Yetki" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tbl_Yazarlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resim" Type="image" />
+          <Property Name="Mail" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Yorum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yorum" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UyeNo" Type="int" />
+          <Property Name="HaberNo" Type="int" Nullable="false" />
+          <Property Name="Tarih" Type="datetime" Nullable="false" />
+          <Property Name="Baslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="Durum" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tbl_Begeni_tbl_Haberler">
+          <End Role="tbl_Haberler" Type="Self.tbl_Haberler" Multiplicity="1" />
+          <End Role="tbl_Begeni" Type="Self.tbl_Begeni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Haberler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Begeni">
+              <PropertyRef Name="HaberNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Begeni_tbl_Uye">
+          <End Role="tbl_Uye" Type="Self.tbl_Uye" Multiplicity="1" />
+          <End Role="tbl_Begeni" Type="Self.tbl_Begeni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Uye">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Begeni">
+              <PropertyRef Name="UyeNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Haberler_tbl_Kategori">
+          <End Role="tbl_Kategori" Type="Self.tbl_Kategori" Multiplicity="0..1" />
+          <End Role="tbl_Haberler" Type="Self.tbl_Haberler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Kategori">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Haberler">
+              <PropertyRef Name="KategoriNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Haberler_tbl_Yazarlar">
+          <End Role="tbl_Yazarlar" Type="Self.tbl_Yazarlar" Multiplicity="0..1" />
+          <End Role="tbl_Haberler" Type="Self.tbl_Haberler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Yazarlar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Haberler">
+              <PropertyRef Name="YazarNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_HaberResim_tbl_Haberler">
+          <End Role="tbl_Haberler" Type="Self.tbl_Haberler" Multiplicity="0..1" />
+          <End Role="tbl_HaberResim" Type="Self.tbl_HaberResim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Haberler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_HaberResim">
+              <PropertyRef Name="haberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Paylasildi_tbl_Haberler">
+          <End Role="tbl_Haberler" Type="Self.tbl_Haberler" Multiplicity="1" />
+          <End Role="tbl_Paylasildi" Type="Self.tbl_Paylasildi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Haberler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Paylasildi">
+              <PropertyRef Name="HaberNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Paylasildi_tbl_Uye">
+          <End Role="tbl_Uye" Type="Self.tbl_Uye" Multiplicity="1" />
+          <End Role="tbl_Paylasildi" Type="Self.tbl_Paylasildi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Uye">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Paylasildi">
+              <PropertyRef Name="UyeNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HaberlerModel1StoreContainer">
+          <EntitySet Name="isimler" EntityType="Self.isimler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Soyisimler" EntityType="Self.Soyisimler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Begeni" EntityType="Self.tbl_Begeni" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Haberler" EntityType="Self.tbl_Haberler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_HaberResim" EntityType="Self.tbl_HaberResim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Kategori" EntityType="Self.tbl_Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Paylasildi" EntityType="Self.tbl_Paylasildi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Trafik" EntityType="Self.tbl_Trafik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Uye" EntityType="Self.tbl_Uye" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Yazarlar" EntityType="Self.tbl_Yazarlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Yorum" EntityType="Self.tbl_Yorum" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_Begeni_tbl_Haberler" Association="Self.FK_tbl_Begeni_tbl_Haberler">
+            <End Role="tbl_Haberler" EntitySet="tbl_Haberler" />
+            <End Role="tbl_Begeni" EntitySet="tbl_Begeni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Begeni_tbl_Uye" Association="Self.FK_tbl_Begeni_tbl_Uye">
+            <End Role="tbl_Uye" EntitySet="tbl_Uye" />
+            <End Role="tbl_Begeni" EntitySet="tbl_Begeni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Haberler_tbl_Kategori" Association="Self.FK_tbl_Haberler_tbl_Kategori">
+            <End Role="tbl_Kategori" EntitySet="tbl_Kategori" />
+            <End Role="tbl_Haberler" EntitySet="tbl_Haberler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Haberler_tbl_Yazarlar" Association="Self.FK_tbl_Haberler_tbl_Yazarlar">
+            <End Role="tbl_Yazarlar" EntitySet="tbl_Yazarlar" />
+            <End Role="tbl_Haberler" EntitySet="tbl_Haberler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_HaberResim_tbl_Haberler" Association="Self.FK_tbl_HaberResim_tbl_Haberler">
+            <End Role="tbl_Haberler" EntitySet="tbl_Haberler" />
+            <End Role="tbl_HaberResim" EntitySet="tbl_HaberResim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Paylasildi_tbl_Haberler" Association="Self.FK_tbl_Paylasildi_tbl_Haberler">
+            <End Role="tbl_Haberler" EntitySet="tbl_Haberler" />
+            <End Role="tbl_Paylasildi" EntitySet="tbl_Paylasildi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Paylasildi_tbl_Uye" Association="Self.FK_tbl_Paylasildi_tbl_Uye">
+            <End Role="tbl_Uye" EntitySet="tbl_Uye" />
+            <End Role="tbl_Paylasildi" EntitySet="tbl_Paylasildi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HaberlerModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="isimler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Soyisimler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Soyadi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Begeni">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UyeNo" Type="Int32" Nullable="false" />
+          <Property Name="HaberNo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Haberler" Relationship="Self.FK_tbl_Begeni_tbl_Haberler" FromRole="tbl_Begeni" ToRole="tbl_Haberler" />
+          <NavigationProperty Name="tbl_Uye" Relationship="Self.FK_tbl_Begeni_tbl_Uye" FromRole="tbl_Begeni" ToRole="tbl_Uye" />
+        </EntityType>
+        <EntityType Name="tbl_Haberler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnaBaslik" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HaberOzet" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="HaberYazisi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YayinTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BeğeniSayisi" Type="Int32" />
+          <Property Name="YorumSayisi" Type="Int32" />
+          <Property Name="Paylasildi" Type="Int32" />
+          <Property Name="YazarNo" Type="Int32" />
+          <Property Name="BaslikResim" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Tur" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="YayinSaati" Type="Time" Precision="7" />
+          <NavigationProperty Name="tbl_Begeni" Relationship="Self.FK_tbl_Begeni_tbl_Haberler" FromRole="tbl_Haberler" ToRole="tbl_Begeni" />
+          <NavigationProperty Name="tbl_Yazarlar" Relationship="Self.FK_tbl_Haberler_tbl_Yazarlar" FromRole="tbl_Haberler" ToRole="tbl_Yazarlar" />
+          <NavigationProperty Name="tbl_HaberResim" Relationship="Self.FK_tbl_HaberResim_tbl_Haberler" FromRole="tbl_Haberler" ToRole="tbl_HaberResim" />
+          <NavigationProperty Name="tbl_Paylasildi" Relationship="Self.FK_tbl_Paylasildi_tbl_Haberler" FromRole="tbl_Haberler" ToRole="tbl_Paylasildi" />
+          <NavigationProperty Name="tbl_Yorum" Relationship="Self.FK_tbl_Yorum_tbl_Haberler" FromRole="tbl_Haberler" ToRole="tbl_Yorum" />
+          <Property Name="KategoriNo" Type="Int32" />
+          <NavigationProperty Name="tbl_Kategori" Relationship="HaberlerModel1.FK_tbl_Haberler_tbl_Kategori" FromRole="tbl_Haberler" ToRole="tbl_Kategori" />
+          <Property Name="Okundu" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_HaberResim">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="haberid" Type="Int32" />
+          <Property Name="resim" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="tbl_Haberler" Relationship="Self.FK_tbl_HaberResim_tbl_Haberler" FromRole="tbl_HaberResim" ToRole="tbl_Haberler" />
+        </EntityType>
+        <EntityType Name="tbl_Kategori">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Haberler" Relationship="HaberlerModel1.FK_tbl_Haberler_tbl_Kategori" FromRole="tbl_Kategori" ToRole="tbl_Haberler" />
+        </EntityType>
+        <EntityType Name="tbl_Paylasildi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UyeNo" Type="Int32" Nullable="false" />
+          <Property Name="HaberNo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Haberler" Relationship="Self.FK_tbl_Paylasildi_tbl_Haberler" FromRole="tbl_Paylasildi" ToRole="tbl_Haberler" />
+          <NavigationProperty Name="tbl_Uye" Relationship="Self.FK_tbl_Paylasildi_tbl_Uye" FromRole="tbl_Paylasildi" ToRole="tbl_Uye" />
+        </EntityType>
+        <EntityType Name="tbl_Trafik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GirisTarih" Type="DateTime" Precision="0" />
+          <Property Name="Tur" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GirisSaat" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityType Name="tbl_Uye">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="İsim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Parola" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tbl_Begeni" Relationship="Self.FK_tbl_Begeni_tbl_Uye" FromRole="tbl_Uye" ToRole="tbl_Begeni" />
+          <NavigationProperty Name="tbl_Paylasildi" Relationship="Self.FK_tbl_Paylasildi_tbl_Uye" FromRole="tbl_Uye" ToRole="tbl_Paylasildi" />
+          <NavigationProperty Name="tbl_Yorum" Relationship="Self.FK_tbl_Yorum_tbl_Uye1" FromRole="tbl_Uye" ToRole="tbl_Yorum" />
+          <Property Name="Yetki" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Yazarlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resim" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_Haberler" Relationship="Self.FK_tbl_Haberler_tbl_Yazarlar" FromRole="tbl_Yazarlar" ToRole="tbl_Haberler" />
+        </EntityType>
+        <EntityType Name="tbl_Yorum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yorum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UyeNo" Type="Int32" />
+          <Property Name="HaberNo" Type="Int32" Nullable="false" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="Int32" />
+          <NavigationProperty Name="tbl_Haberler" Relationship="Self.FK_tbl_Yorum_tbl_Haberler" FromRole="tbl_Yorum" ToRole="tbl_Haberler" />
+          <NavigationProperty Name="tbl_Uye" Relationship="Self.FK_tbl_Yorum_tbl_Uye1" FromRole="tbl_Yorum" ToRole="tbl_Uye" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_tbl_Begeni_tbl_Haberler">
+          <End Role="tbl_Haberler" Type="Self.tbl_Haberler" Multiplicity="1" />
+          <End Role="tbl_Begeni" Type="Self.tbl_Begeni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Haberler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Begeni">
+              <PropertyRef Name="HaberNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Begeni_tbl_Uye">
+          <End Role="tbl_Uye" Type="Self.tbl_Uye" Multiplicity="1" />
+          <End Role="tbl_Begeni" Type="Self.tbl_Begeni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Uye">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Begeni">
+              <PropertyRef Name="UyeNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Haberler_tbl_Yazarlar">
+          <End Role="tbl_Yazarlar" Type="Self.tbl_Yazarlar" Multiplicity="0..1" />
+          <End Role="tbl_Haberler" Type="Self.tbl_Haberler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Yazarlar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Haberler">
+              <PropertyRef Name="YazarNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_HaberResim_tbl_Haberler">
+          <End Role="tbl_Haberler" Type="Self.tbl_Haberler" Multiplicity="0..1" />
+          <End Role="tbl_HaberResim" Type="Self.tbl_HaberResim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Haberler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_HaberResim">
+              <PropertyRef Name="haberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Paylasildi_tbl_Haberler">
+          <End Role="tbl_Haberler" Type="Self.tbl_Haberler" Multiplicity="1" />
+          <End Role="tbl_Paylasildi" Type="Self.tbl_Paylasildi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Haberler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Paylasildi">
+              <PropertyRef Name="HaberNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Yorum_tbl_Haberler">
+          <End Role="tbl_Haberler" Type="Self.tbl_Haberler" Multiplicity="1" />
+          <End Role="tbl_Yorum" Type="Self.tbl_Yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Haberler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Yorum">
+              <PropertyRef Name="HaberNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Paylasildi_tbl_Uye">
+          <End Role="tbl_Uye" Type="Self.tbl_Uye" Multiplicity="1" />
+          <End Role="tbl_Paylasildi" Type="Self.tbl_Paylasildi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Uye">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Paylasildi">
+              <PropertyRef Name="UyeNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Yorum_tbl_Uye1">
+          <End Role="tbl_Uye" Type="Self.tbl_Uye" Multiplicity="0..1" />
+          <End Role="tbl_Yorum" Type="Self.tbl_Yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Uye">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Yorum">
+              <PropertyRef Name="UyeNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HaberlerEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="isimler" EntityType="Self.isimler" />
+          <EntitySet Name="Soyisimler" EntityType="Self.Soyisimler" />
+          <EntitySet Name="tbl_Begeni" EntityType="Self.tbl_Begeni" />
+          <EntitySet Name="tbl_Haberler" EntityType="Self.tbl_Haberler" />
+          <EntitySet Name="tbl_HaberResim" EntityType="Self.tbl_HaberResim" />
+          <EntitySet Name="tbl_Kategori" EntityType="Self.tbl_Kategori" />
+          <EntitySet Name="tbl_Paylasildi" EntityType="Self.tbl_Paylasildi" />
+          <EntitySet Name="tbl_Trafik" EntityType="Self.tbl_Trafik" />
+          <EntitySet Name="tbl_Uye" EntityType="Self.tbl_Uye" />
+          <EntitySet Name="tbl_Yazarlar" EntityType="Self.tbl_Yazarlar" />
+          <EntitySet Name="tbl_Yorum" EntityType="Self.tbl_Yorum" />
+          <AssociationSet Name="FK_tbl_Begeni_tbl_Haberler" Association="Self.FK_tbl_Begeni_tbl_Haberler">
+            <End Role="tbl_Haberler" EntitySet="tbl_Haberler" />
+            <End Role="tbl_Begeni" EntitySet="tbl_Begeni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Begeni_tbl_Uye" Association="Self.FK_tbl_Begeni_tbl_Uye">
+            <End Role="tbl_Uye" EntitySet="tbl_Uye" />
+            <End Role="tbl_Begeni" EntitySet="tbl_Begeni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Haberler_tbl_Yazarlar" Association="Self.FK_tbl_Haberler_tbl_Yazarlar">
+            <End Role="tbl_Yazarlar" EntitySet="tbl_Yazarlar" />
+            <End Role="tbl_Haberler" EntitySet="tbl_Haberler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_HaberResim_tbl_Haberler" Association="Self.FK_tbl_HaberResim_tbl_Haberler">
+            <End Role="tbl_Haberler" EntitySet="tbl_Haberler" />
+            <End Role="tbl_HaberResim" EntitySet="tbl_HaberResim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Paylasildi_tbl_Haberler" Association="Self.FK_tbl_Paylasildi_tbl_Haberler">
+            <End Role="tbl_Haberler" EntitySet="tbl_Haberler" />
+            <End Role="tbl_Paylasildi" EntitySet="tbl_Paylasildi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Yorum_tbl_Haberler" Association="Self.FK_tbl_Yorum_tbl_Haberler">
+            <End Role="tbl_Haberler" EntitySet="tbl_Haberler" />
+            <End Role="tbl_Yorum" EntitySet="tbl_Yorum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Paylasildi_tbl_Uye" Association="Self.FK_tbl_Paylasildi_tbl_Uye">
+            <End Role="tbl_Uye" EntitySet="tbl_Uye" />
+            <End Role="tbl_Paylasildi" EntitySet="tbl_Paylasildi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Yorum_tbl_Uye1" Association="Self.FK_tbl_Yorum_tbl_Uye1">
+            <End Role="tbl_Uye" EntitySet="tbl_Uye" />
+            <End Role="tbl_Yorum" EntitySet="tbl_Yorum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Haberler_tbl_Kategori" Association="HaberlerModel1.FK_tbl_Haberler_tbl_Kategori">
+            <End Role="tbl_Kategori" EntitySet="tbl_Kategori" />
+            <End Role="tbl_Haberler" EntitySet="tbl_Haberler" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_tbl_Haberler_tbl_Kategori">
+          <End Type="HaberlerModel1.tbl_Kategori" Role="tbl_Kategori" Multiplicity="0..1" />
+          <End Type="HaberlerModel1.tbl_Haberler" Role="tbl_Haberler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Kategori">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Haberler">
+              <PropertyRef Name="KategoriNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HaberlerModel1StoreContainer" CdmEntityContainer="HaberlerEntities1">
+          <EntitySetMapping Name="isimler">
+            <EntityTypeMapping TypeName="HaberlerModel1.isimler">
+              <MappingFragment StoreEntitySet="isimler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Soyisimler">
+            <EntityTypeMapping TypeName="HaberlerModel1.Soyisimler">
+              <MappingFragment StoreEntitySet="Soyisimler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Begeni">
+            <EntityTypeMapping TypeName="HaberlerModel1.tbl_Begeni">
+              <MappingFragment StoreEntitySet="tbl_Begeni">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UyeNo" ColumnName="UyeNo" />
+                <ScalarProperty Name="HaberNo" ColumnName="HaberNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Haberler">
+            <EntityTypeMapping TypeName="HaberlerModel1.tbl_Haberler">
+              <MappingFragment StoreEntitySet="tbl_Haberler">
+                <ScalarProperty Name="Okundu" ColumnName="Okundu" />
+                <ScalarProperty Name="KategoriNo" ColumnName="KategoriNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AnaBaslik" ColumnName="AnaBaslik" />
+                <ScalarProperty Name="HaberOzet" ColumnName="HaberOzet" />
+                <ScalarProperty Name="HaberYazisi" ColumnName="HaberYazisi" />
+                <ScalarProperty Name="YayinTarihi" ColumnName="YayinTarihi" />
+                <ScalarProperty Name="BeğeniSayisi" ColumnName="BeğeniSayisi" />
+                <ScalarProperty Name="YorumSayisi" ColumnName="YorumSayisi" />
+                <ScalarProperty Name="Paylasildi" ColumnName="Paylasildi" />
+                <ScalarProperty Name="YazarNo" ColumnName="YazarNo" />
+                <ScalarProperty Name="BaslikResim" ColumnName="BaslikResim" />
+                <ScalarProperty Name="Tur" ColumnName="Tur" />
+                <ScalarProperty Name="YayinSaati" ColumnName="YayinSaati" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_HaberResim">
+            <EntityTypeMapping TypeName="HaberlerModel1.tbl_HaberResim">
+              <MappingFragment StoreEntitySet="tbl_HaberResim">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="haberid" ColumnName="haberid" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Kategori">
+            <EntityTypeMapping TypeName="HaberlerModel1.tbl_Kategori">
+              <MappingFragment StoreEntitySet="tbl_Kategori">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Paylasildi">
+            <EntityTypeMapping TypeName="HaberlerModel1.tbl_Paylasildi">
+              <MappingFragment StoreEntitySet="tbl_Paylasildi">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UyeNo" ColumnName="UyeNo" />
+                <ScalarProperty Name="HaberNo" ColumnName="HaberNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Trafik">
+            <EntityTypeMapping TypeName="HaberlerModel1.tbl_Trafik">
+              <MappingFragment StoreEntitySet="tbl_Trafik">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="GirisTarih" ColumnName="GirisTarih" />
+                <ScalarProperty Name="Tur" ColumnName="Tur" />
+                <ScalarProperty Name="GirisSaat" ColumnName="GirisSaat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Uye">
+            <EntityTypeMapping TypeName="HaberlerModel1.tbl_Uye">
+              <MappingFragment StoreEntitySet="tbl_Uye">
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="İsim" ColumnName="İsim" />
+                <ScalarProperty Name="Soyisim" ColumnName="Soyisim" />
+                <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+                <ScalarProperty Name="Parola" ColumnName="Parola" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Yazarlar">
+            <EntityTypeMapping TypeName="HaberlerModel1.tbl_Yazarlar">
+              <MappingFragment StoreEntitySet="tbl_Yazarlar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Yorum">
+            <EntityTypeMapping TypeName="HaberlerModel1.tbl_Yorum">
+              <MappingFragment StoreEntitySet="tbl_Yorum">
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Yorum" ColumnName="Yorum" />
+                <ScalarProperty Name="UyeNo" ColumnName="UyeNo" />
+                <ScalarProperty Name="HaberNo" ColumnName="HaberNo" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

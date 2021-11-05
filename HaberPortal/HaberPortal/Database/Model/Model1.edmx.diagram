@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="64bf8ef646ee424293911d8057b3fea9" Name="Diagram1">
+        <EntityTypeShape EntityType="HaberlerModel.isimler" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.Soyisimler" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.tbl_AltKategori" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.tbl_Begeni" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.tbl_Haberler" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.tbl_HaberResim" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.tbl_Kategori" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.tbl_Paylasildi" Width="1.5" PointX="7.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.tbl_Trafik" Width="1.5" PointX="9.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.tbl_Uye" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.tbl_Yazarlar" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaberlerModel.tbl_Yorum" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="HaberlerModel.FK_tbl_AltKategori_tbl_Kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="HaberlerModel.FK_tbl_Haberler_tbl_AltKategori" ManuallyRouted="false" />
+        <AssociationConnector Association="HaberlerModel.FK_tbl_Begeni_tbl_Haberler" ManuallyRouted="false" />
+        <AssociationConnector Association="HaberlerModel.FK_tbl_Begeni_tbl_Uye" ManuallyRouted="false" />
+        <AssociationConnector Association="HaberlerModel.FK_tbl_Haberler_tbl_Yazarlar" ManuallyRouted="false" />
+        <AssociationConnector Association="HaberlerModel.FK_tbl_HaberResim_tbl_Haberler" ManuallyRouted="false" />
+        <AssociationConnector Association="HaberlerModel.FK_tbl_Paylasildi_tbl_Haberler" ManuallyRouted="false" />
+        <AssociationConnector Association="HaberlerModel.FK_tbl_Yorum_tbl_Haberler" ManuallyRouted="false" />
+        <AssociationConnector Association="HaberlerModel.FK_tbl_Paylasildi_tbl_Uye" ManuallyRouted="false" />
+        <AssociationConnector Association="HaberlerModel.FK_tbl_Yorum_tbl_Uye1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

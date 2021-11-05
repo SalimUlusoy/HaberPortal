@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6A4BFD3D-7CEE-4548-9108-3792C21B6187}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HaberPortal</RootNamespace>
+    <AssemblyName>HaberPortal</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v20.2, Version=20.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.2.Core, Version=20.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.2, Version=20.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v20.2, Version=20.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Database\Model\isimler.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\Model2.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\Model2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\Model2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\Soyisimler.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\tbl_Begeni.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\tbl_Haberler.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\tbl_HaberResim.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\tbl_Kategori.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\tbl_Paylasildi.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\tbl_Trafik.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\tbl_Uye.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\tbl_Yazarlar.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\tbl_Yorum.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Repository\GenericRepository.cs" />
+    <Compile Include="Formlar\FormAnaSayfa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\FormAnaSayfa.Designer.cs">
+      <DependentUpon>FormAnaSayfa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\FormHaberDetay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\FormHaberDetay.Designer.cs">
+      <DependentUpon>FormHaberDetay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\FormHaberEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\FormHaberEkle.Designer.cs">
+      <DependentUpon>FormHaberEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\FormRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\FormRegister.Designer.cs">
+      <DependentUpon>FormRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC_AnaSayfa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_AnaSayfa.Designer.cs">
+      <DependentUpon>UC_AnaSayfa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Ayarlar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Ayarlar.Designer.cs">
+      <DependentUpon>UC_Ayarlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Haberler.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Haberler.Designer.cs">
+      <DependentUpon>UC_Haberler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Spor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Spor.Designer.cs">
+      <DependentUpon>UC_Spor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Ekonomi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Ekonomi.Designer.cs">
+      <DependentUpon>UC_Ekonomi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Seyahat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Seyahat.Designer.cs">
+      <DependentUpon>UC_Seyahat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Dunya.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Dunya.Designer.cs">
+      <DependentUpon>UC_Dunya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_SonDakika.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_SonDakika.Designer.cs">
+      <DependentUpon>UC_SonDakika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_HaberTemp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_HaberTemp.Designer.cs">
+      <DependentUpon>UC_HaberTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_YorumTemp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_YorumTemp.Designer.cs">
+      <DependentUpon>UC_YorumTemp.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Formlar\FormAnaSayfa.resx">
+      <DependentUpon>FormAnaSayfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\FormHaberDetay.resx">
+      <DependentUpon>FormHaberDetay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\FormHaberEkle.resx">
+      <DependentUpon>FormHaberEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\FormRegister.resx">
+      <DependentUpon>FormRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UC_AnaSayfa.resx">
+      <DependentUpon>UC_AnaSayfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Ayarlar.resx">
+      <DependentUpon>UC_Ayarlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Haberler.resx">
+      <DependentUpon>UC_Haberler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_HaberTemp.resx">
+      <DependentUpon>UC_HaberTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Spor.resx">
+      <DependentUpon>UC_Spor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Ekonomi.resx">
+      <DependentUpon>UC_Ekonomi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Seyahat.resx">
+      <DependentUpon>UC_Seyahat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Dunya.resx">
+      <DependentUpon>UC_Dunya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_SonDakika.resx">
+      <DependentUpon>UC_SonDakika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_YorumTemp.resx">
+      <DependentUpon>UC_YorumTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Database\Model\Model2.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database\Model\Model2.edmx.diagram">
+      <DependentUpon>Model2.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\Model\Model2.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model2.edmx</DependentUpon>
+      <LastGenOutput>Model2.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\Model\Model2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model2.edmx</DependentUpon>
+      <LastGenOutput>Model2.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
