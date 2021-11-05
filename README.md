@@ -1,5 +1,21 @@
 # HaberPortal
+![HaberPortalLogo](https://user-images.githubusercontent.com/60936024/140441048-3029e2a4-eb4f-4dbd-b77b-87e9d56f1831.png)
 
+# Uygulama Hakkında Kısa Bilgi
+HaberPortal uygulaması .Net Framework ve Entity Framework kullanılarak yazılmış bir masaüstü haber uygulamasıdır.
+Kullanıcı, yönetici ve ziyaretçi olarak giriş yapılabilir ve 3 senaryoda da farklı özellikler kullanılabilir.
+
+# Uygulamanın Anlatım Video Linki
+https://web.microsoftstream.com/video/3f431ef4-0c82-4092-98a7-52c35fbc3b78?list=studio
+
+# Uygulamada Kullanılan Teknolojiler
+[1] [Entity Framework](https://github.com/mono/entityframework)
+
+[2] [.Net](https://github.com/dotnet)
+
+[3] [MsSql](https://github.com/topics/sql)
+
+# Uygulamanın Açık Kaynak Lisansı
 MIT License
 
 Copyright (c) 2021 Salim Emirhan Ulusoy
